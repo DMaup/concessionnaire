@@ -1,8 +1,8 @@
 <h1> Comparateur: </h1>
 <?php 
 
-    $id_user = $_SESSION["user"]["id"];
-    $cart = getCars($id_user);
+    // $id_user = $_SESSION["user"]["id"];
+    $cart = getCars();
     // $total = 0;
 
     foreach( $cart as $car ) {

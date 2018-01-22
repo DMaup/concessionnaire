@@ -1,6 +1,5 @@
-<?php 
-
-    // Si le panier dans la session n'existe pas, je le défini en temps que tableau
+<?php
+// Si le panier dans la session n'existe pas, je le défini en temps que tableau
     if( !isset( $_SESSION["cart"] ) ){
         $_SESSION["cart"] = [];
     }
@@ -16,7 +15,7 @@
         foreach( $_SESSION["cart"] as $key => $cart_item ){
 
             // Si l'élément existe déjà dans mon panier, je garde sa position dans le tableau en mémoire
-            if( $cart_item["mark"] == $car["mark"] ){
+            if( $cart_item["label"] == $car["label"] ){
                 $car_index = $key;
                 break;
             }
@@ -57,4 +56,3 @@
     }
 
     header("Location: ?page=cart");
-    

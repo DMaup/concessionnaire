@@ -7,22 +7,20 @@ define("DB_USER", "root");
 define("DB_PASS", "root");
 define("CARS_BY_PAGE", 2);
 
-// function connectionRequired(){
+function isLogged(){
+    return isset( $_SESSION["user"] );
+}
+
+function connectionRequired(){
     
-//     if( !isset( $_SESSION["user"] ) ){
+    if( !isset( $_SESSION["user"] ) ){
+        
+        header("Location: ?page=home");
+        die();
+    }
+}
 
-//         header("Location: ?page=login");
-//         die();
-//     }
-//     else if( !isLogged() ){
 
-//         $error = "Vous n'avez les autorisations nécessaires !";
-//         header("Location: ?page=login&error=".$error);
-//         die();
-
-//     }
-
-// }
 
 function getConnection(){
 
@@ -39,7 +37,7 @@ function getConnection(){
 
 /***** cars ******/
 
-function getcars( $page_index = 0 ){
+function getCars( $page_index = 0 ){
 
     $connection = getConnection();
     $sql = "SELECT id, marks.label_mark, colors.label_color, price, picture
